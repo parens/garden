@@ -130,8 +130,16 @@ tmax_lt V X with cmp V X
 tmax_lte : (V X : Nat) -> Lte X (tmax V X)
 tmax_lte X Y = {!!}
 
+
+cmp_lt : {V Z : Nat} -> (D : Lt V Z) -> (cmp V Z == ord/lt D)
+cmp_lt = ?
+fuck : {V Z : Nat} -> Lt V Z -> (Z == (tmax V Z))
+fuck D with cmp_lt D
+... | D' = ?
+
 unmax : {X Z V : Nat} -> Lt V Z -> Tree X Z -> Tree X (tmax V Z)
-unmax {X} {Z} {V} D T = ?
+unmax {X} {Z} {V} D T with cmp_lt D | fuck D
+... | D' | refl = {!T!}
 
 --(lte_trans (tmin_lte V X) (lte_of_lt D)))
 insert : {X Z : Nat} -> Tree X Z -> (V : Nat) -> Tree (tmin V X) (tmax V Z)
