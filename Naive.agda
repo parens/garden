@@ -133,7 +133,7 @@ tmax_lte X Y = {!!}
 
 cmp_lt : {V Z : Nat} -> (D : Lt V Z) -> (cmp V Z == ord/lt D)
 cmp_lt = ?
-fuck : {V Z : Nat} -> Lt V Z -> (Z == (tmax V Z))
+fuck : {V Z : Nat} -> Lt V Z -> (Z == (tmax V Z | cmp V Z))
 fuck D with cmp_lt D
 ... | D' = ?
 
